@@ -9,5 +9,9 @@ public class Movie {
     public void setDuration(int duration) {
         this.duration = duration;
     }
- 
+    
+    public Movie(String title, String genre, String director, int duration){
+        
+    }
+    
 }

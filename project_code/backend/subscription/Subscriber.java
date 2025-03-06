@@ -58,5 +58,7 @@ package backend.subscription;
    // private void setFavoriteCount(int favoriteCount) {
    //    this.favoriteCount = favoriteCount;
    // }
-
+   public Subscriber(String email, String password, SubscriptionPlan plan){
+      
+   }
 }

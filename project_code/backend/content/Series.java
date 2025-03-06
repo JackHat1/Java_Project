@@ -16,6 +16,9 @@ public class Series {
     // public void setEpisodesPerSeason(String[][] episodesPerSeason) {
     //     this.episodesPerSeason = episodesPerSeason;
     // }
-    
+
+    public Series(String title, String genre, String director, int seasons, int maxEpisodesPerSeason){
+        
+    }
 }
 

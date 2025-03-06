@@ -23,5 +23,8 @@ public class SubscriptionPlan {
     //     this.planMaxScreens = planMaxScreens;
     // }
 
+    public SubscriptionPlan(String name, double price, int maxScreens){
+        
+    }
     
 }
