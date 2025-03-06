@@ -1,5 +1,7 @@
 package backend.repository;
 
+import backend.content.Content;
+
 public class ContentRepository {
     private int MAX_CONTENT;
     private Content[] contentList;

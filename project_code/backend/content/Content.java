@@ -1,4 +1,4 @@
-package backend.repository;
+package backend.content;
 
 public class Content {
     
