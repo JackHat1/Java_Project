@@ -94,7 +94,7 @@ public abstract class Content {
               ratingCount++;
           }
       }
-  }
+   }
 
    public double getAverageRating() {
       if (ratingCount == 0) {
@@ -135,7 +135,7 @@ public abstract class Content {
          if (i < MAX_ACTORS) {
             actorNames[i] = actorName;
          }
-      }
+   }
 
    public void removeActor(String actorName) {
       for (int i = 0; i < MAX_ACTORS; i++) {
@@ -144,7 +144,7 @@ public abstract class Content {
               return;
           }
       }
-  }
+   }
 
    public String printDetails() {
       return "Content ID: " + contentId + "\n" +
