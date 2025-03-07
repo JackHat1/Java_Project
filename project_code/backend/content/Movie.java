@@ -1,7 +1,7 @@
 package backend.content;
 
 public class Movie extends Content{
-    private int duration;
+    private final int duration;
 
     public Movie(String title, String genre, String director, int duration){
         super(title,genre,director);
@@ -15,13 +15,9 @@ public class Movie extends Content{
         return duration;
     }
 
-    private void setDuration(int duration) {
-        this.duration = duration;
-    }
-    
-    public void addEpisode(int season, int episodeIndex, String episodeTitle){
-
-    }
+    // private void setDuration(int duration) {
+    //     this.duration = duration;
+    // }
 
     @Override
     public String printDetails() {

@@ -1,7 +1,8 @@
 package backend.content;
 
 public abstract class Content {  
-   private int contentId = 0;
+   private int contentId ;
+   private static int idCounter = 1; // Auto-increment ID
    private String title;
    private String primaryGenre;
    private double avgRating;
@@ -9,10 +10,11 @@ public abstract class Content {
    private String [] actorNames;
    private String director;
    private int ratingCount;
-   private int MAX_RATINGS = 1000;
-   private int MAX_ACTORS  = 10; 
+   private static final int MAX_RATINGS = 100;
+   private static final int MAX_ACTORS  = 10; 
    
    public Content(String title, String genre, String director) {
+      this.contentId = idCounter++; // Auto-increment ID
       this.title = title;
       this.primaryGenre = genre;
       this.director = director;
@@ -32,6 +34,7 @@ public abstract class Content {
    // private void setContentId(int contentId) {
    //    this.contentId = contentId;
    // }
+
    public String getTitle() {
       return title;
    }

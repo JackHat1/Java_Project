@@ -1,7 +1,7 @@
 package backend.content;
 
 public class Series extends Content{
-    private int seasons;
+    private final int seasons;
     private String[][] episodesPerSeason; /*ο πρώτος δείκτης είναι ο αύξων αριθμός της season και ο δεύτερος ο αριθμός επεισοδίου. Το String[i][j] θα κρατάει τον τίτλο επεισοδίου j της season i*/
 
     public Series(String title, String genre, String director, int seasons, int maxEpisodesPerSeason){
@@ -13,9 +13,9 @@ public class Series extends Content{
     public int getSeasons() {
         return seasons;
     }
-    private void setSeasons(int seasons) {
-        this.seasons = seasons;
-    }
+    // private void setSeasons(int seasons) {
+    //     this.seasons = seasons;
+    // }
     public String[][] getEpisodesPerSeason() {
         return episodesPerSeason;
     }
@@ -43,16 +43,8 @@ public class Series extends Content{
     }
     
     public void updateEpisode(int season, int episodeIndex, String newTitle) {
-        if (season > 0 && season <= seasons) { 
-            int count = 0; 
-            for (int i = 0; i < episodesPerSeason[season - 1].length; i++) {
-                if (episodesPerSeason[season - 1][i] != null) {
-                    count++; 
-                }
-            }
-            if (episodeIndex >= 0 && episodeIndex < count) { 
-                episodesPerSeason[season - 1][episodeIndex] = newTitle;     
-            }
+        if (season > 0 && season <= seasons && episodeIndex >= 0) {
+            episodesPerSeason[season - 1][episodeIndex] = newTitle;
         }
     }
 
