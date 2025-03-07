@@ -3,12 +3,14 @@ package backend.repository;
 import backend.content.Content;
 
 public class ContentRepository {
-    private int MAX_CONTENT;
+    private int MAX_CONTENT ;
     private Content[] contentList;
     private int contentCount;
     
     public ContentRepository(int maxNumOfContentEntries){
         this.MAX_CONTENT = maxNumOfContentEntries;
+        this.contentList = new Content[MAX_CONTENT]; 
+        this.contentCount = 0; 
     }
 
     public int getMAX_CONTENT() {

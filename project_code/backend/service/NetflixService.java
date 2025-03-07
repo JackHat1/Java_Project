@@ -43,7 +43,7 @@ public class NetflixService {
         System.out.println("Movies Recommended for Subscriber " + subscriber.getSubscriberEmail());
     
         int index = 0;
-        while (movies[index] != null) { // Iterate until a null value is found
+        while (movies[index] != null) {
             System.out.println("- " + movies[index].getTitle() + " (? " + movies[index].getAverageRating() + ")");
             index++;
         }
