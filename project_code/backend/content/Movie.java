@@ -18,4 +18,11 @@ public class Movie extends Content{
     public Movie(String title, int duration){
         this(title, "Unknown", "Unknown", duration); 
     }
+
+    @Override
+    public String printDetails() {
+        return super.printDetails() + "\n" + // Reuse Content's printDetails()
+            "Duration: " + duration + " minutes";
+    }
+
 }

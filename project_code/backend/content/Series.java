@@ -28,5 +28,12 @@ public class Series extends Content{
         this(title, "Unknown", "Unknown", seasons, maxEpisodesPerSeason); 
 
      }
+
+    @Override
+    public String printDetails() {
+        return super.printDetails() + "\n" + // Reuse Content's printDetails()
+            "Seasons: " + seasons;
+    }
+
 }
 

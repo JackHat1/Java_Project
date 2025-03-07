@@ -9,8 +9,21 @@ public abstract class Content {
    private String [] actorNames;
    private String director;
    private int ratingCount;
-   private int MAX_RATINGS;
+   private int MAX_RATINGS = 100;
    private int MAX_ACTORS;
+   
+   public Content(String title, String genre, String director) {
+      this.title = title;
+      this.primaryGenre = genre;
+      this.director = director;
+      this.ratings = new float[MAX_RATINGS];  
+      this.ratingCount = 0;  
+  }
+  
+   // Constructor with default director and genre set as “Unknown”
+   public Content(String title){      
+      this(title, "Unknown", "Unknown"); 
+   }
 
    public int getContentId() {
       return contentId;
@@ -48,6 +61,7 @@ public abstract class Content {
    // private void setActorNames(String[] actorNames) {
    //    this.actorNames = actorNames;
    // }
+   
    public String getDirector() {
       return director;
    }
@@ -72,18 +86,6 @@ public abstract class Content {
    // private void setMAX_ACTORS(int mAX_ACTORS) {
    //    MAX_ACTORS = mAX_ACTORS;
    // }
-
-   
-   public Content(String title, String genre, String director) {
-      this.title = title;
-      this.primaryGenre = genre;
-      this.director = director;
-  }
-  
-   // Constructor with default director and genre set as “Unknown”
-   public Content(String title){      
-      this(title, "Unknown", "Unknown"); 
-   }
 
    public void addRating(float newRating) {
       if (newRating >= 0 && newRating <= 5) {
@@ -125,19 +127,34 @@ public abstract class Content {
       return result;
   }
 
-  public void addActor(String actorName) {
-      int i = 0;
-      while (actorNames[i] != null && i < MAX_ACTORS) {
-         i++;
+   public void addActor(String actorName) {
+         int i = 0;
+         while (actorNames[i] != null && i < MAX_ACTORS) {
+            i++;
+         }
+         if (i < MAX_ACTORS) {
+            actorNames[i] = actorName;
+         }
       }
-      if (i < MAX_ACTORS) {
-         actorNames[i] = actorName;
+
+   public void removeActor(String actorName) {
+      for (int i = 0; i < MAX_ACTORS; i++) {
+          if (actorNames[i] == actorName) {
+              actorNames[i] = null;
+              return;
+          }
       }
+  }
+
+   public String printDetails() {
+      return "Content ID: " + contentId + "\n" +
+            "Title: " + title + "\n" +
+            "Primary Genre: " + primaryGenre + "\n" +
+            "Director: " + director + "\n" +
+            "Average Rating: " + getAverageRating() + "\n" +
+            "Number of Ratings: " + ratingCount + "\n" +
+            "Actors: " + getNonNullActors();
    }
- 
-
-  
-
 
   
 }
