@@ -2,6 +2,7 @@ package backend.content;
 
 public class Series extends Content{
     private int seasons;
+
     private String[][] episodesPerSeason; /*ο πρώτος δείκτης είναι ο αύξων αριθμός της season και ο δεύτερος ο αριθμός επεισοδίου. Το String[i][j] θα κρατάει τον τίτλο επεισοδίου j της season i*/
     
     public int getSeasons() {
@@ -23,11 +24,12 @@ public class Series extends Content{
         this.episodesPerSeason = new String[seasons][maxEpisodesPerSeason];
     }
 
-     //Constructor with default director and genre set as “Unknown”
-     public Series(String title, int seasons, int maxEpisodesPerSeason){
-        this(title, "Unknown", "Unknown", seasons, maxEpisodesPerSeason); 
+        public void addEpisode(int season, int episodeIndex, String episodeTitle) {
+            if (season > 0 && season <= seasons && episodeIndex >= 0 && episodeIndex < episodesPerSeason[season - 1].length) {
+                episodesPerSeason[season - 1][episodeIndex] = episodeTitle;
+            }
+        }
 
-     }
 
     @Override
     public String printDetails() {

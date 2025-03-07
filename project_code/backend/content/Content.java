@@ -18,7 +18,7 @@ public abstract class Content {
       this.director = director;
       this.ratings = new float[MAX_RATINGS];  
       this.ratingCount = 0;  
-  }
+   }
   
    // Constructor with default director and genre set as “Unknown”
    public Content(String title){      
@@ -127,7 +127,7 @@ public abstract class Content {
       return result;
   }
 
-   public void addActor(String actorName) {
+  public void addActor(String actorName) {
          int i = 0;
          while (actorNames[i] != null && i < MAX_ACTORS) {
             i++;
