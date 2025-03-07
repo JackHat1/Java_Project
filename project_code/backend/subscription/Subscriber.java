@@ -7,6 +7,7 @@ import backend.content.Content;
    private String subscriberPassword;
    private SubscriptionPlan plan;
    private Content[] watchHistory;
+   private int MAX_HISTORY = 100 ; 
    private boolean active;
    private int watchCount;
    private String[] favoriteGenres;
@@ -61,6 +62,9 @@ import backend.content.Content;
       this.subscriberEmail = email;
       this.subscriberPassword = password;
       this.plan = plan;
+      this.watchHistory = new Content[MAX_HISTORY]; 
+      this.watchCount = 0;
+
    }
 
    public void setSubscriberEmail(String email) {
@@ -99,32 +103,42 @@ import backend.content.Content;
       }
    }
 
-   public void printSubscriberDetails() {
-      System.out.println("? Email: " + subscriberEmail);
-      System.out.println("? Subscription Plan: " + plan.getPlanName());
-      System.out.println("? Price: $" + plan.getPlanPrice() + " per month");
-      System.out.println("? Max Screens: " + plan.getPlanMaxScreens());
-      
-      System.out.println("? Active Status: " + (active ? "Active" : "Inactive"));
+public void printSubscriberDetails() {
+    System.out.println("\n---------------------------------");
+    System.out.println("? Email: " + subscriberEmail);
+    System.out.println("? Subscription Plan: " + plan.getPlanName());
+    System.out.println("? Price: $" + plan.getPlanPrice() + " per month");
+    System.out.println("? Max Screens: " + plan.getPlanMaxScreens());
+    System.out.println("? Active Status: " + (active ? "Active" : "Deactivated"));
 
-      System.out.print("? Favorite Genres: ");
-      if (favoriteCount == 0) {
-         System.out.println("None");
-      } else {
-         for (int i = 0; i < favoriteCount; i++) {
-            System.out.print(favoriteGenres[i] + (i < favoriteCount - 1 ? ", " : "\n"));
-         }
-      }
+    // ✅ Print Favorite Genres
+    System.out.print("? Favorite Genres: ");
+    if (favoriteCount == 0 || favoriteGenres == null) {
+        System.out.println("None");
+    } else {
+        for (int i = 0; i < favoriteCount; i++) {
+            System.out.print(favoriteGenres[i]);
+            if (i < favoriteCount - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println(); // Move to next line after printing genres
+    }
 
-      System.out.println("? Watch History:");
-      for (int i = 0; i < watchCount; i++) {
-         System.out.println("- " + watchHistory[i].getTitle());
-      }
-   }
+    // ✅ Print Watch History
+    System.out.println("? Watch History:");
+    if (watchCount == 0 || watchHistory == null) {
+        System.out.println("- None");
+    } else {
+        for (int i = 0; i < watchCount; i++) {
+            if (watchHistory[i] != null) {
+                System.out.println("- " + watchHistory[i].getTitle());
+            }
+        }
+    }
 
-  
+    System.out.println("\n---------------------------------");
+}
 
-  
 
-  
 }

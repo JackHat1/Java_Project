@@ -86,9 +86,7 @@ public class Series extends Content{
         
         return new String[0];
     }
-    
-    
-       
+          
     @Override
     public String printDetails() {
         String details = super.printDetails() + "\nSeasons: " + seasons;

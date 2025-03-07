@@ -3,8 +3,8 @@ package backend.repository;
 import backend.subscription.Subscriber; 
 
 public class SubscriberRepository {
-    private int MAX_SUBSCRIBERS;
-    private Subscriber[] subscribers;
+    private int MAX_SUBSCRIBERS = 100;
+    private Subscriber[] subscribers = new Subscriber[MAX_SUBSCRIBERS];
     private int count = 0;
 
     public int getMAX_SUBSCRIBERS() {
@@ -27,13 +27,22 @@ public class SubscriberRepository {
     // }
 
     public boolean addSubscriber(Subscriber subscriber) {
-        if (count < MAX_SUBSCRIBERS) { 
-            subscribers[count] = subscriber; 
-            count++; 
-            return true; 
+        if (subscriber == null) return false;
+    
+        if (subscribers == null) { 
+            subscribers = new Subscriber[MAX_SUBSCRIBERS];
+        }
+    
+        for (int i = 0; i < subscribers.length; i++) { 
+            if (subscribers[i] == null) {
+                subscribers[i] = subscriber; 
+                count++;
+                return true;
+            }
         }
         return false; 
     }
+    
     
     public void deactivateSubscriber(Subscriber subscriber) {
         if (subscriber != null) {
@@ -48,13 +57,20 @@ public class SubscriberRepository {
     }
     
     public Subscriber findSubscriberByEmail(String subscriberEmail) {
-        for (int i = 0; i < count; i++) { // Loop through the subscribers
-            if (subscribers[i] != null && subscribers[i].getSubscriberEmail().equals(subscriberEmail)) {
-                return subscribers[i]; // Return the matching subscriber
+        if (subscriberEmail == null) { 
+            return null;
+        }
+        if (subscribers == null) { 
+            return null;
+        }
+        for (int i = 0; i < count; i++) { 
+            if (subscribers[i] != null && subscriberEmail.equals(subscribers[i].getSubscriberEmail())) { 
+                return subscribers[i];
             }
         }
-        return null; // Return null if not found
+        return null; 
     }
+    
     
  
 }

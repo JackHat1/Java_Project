@@ -10,12 +10,13 @@ public abstract class Content {
    private String director;
    private int ratingCount;
    private int MAX_RATINGS = 1000;
-   private int MAX_ACTORS  = 100; 
+   private int MAX_ACTORS  = 10; 
    
    public Content(String title, String genre, String director) {
       this.title = title;
       this.primaryGenre = genre;
       this.director = director;
+      this.actorNames = new String[MAX_ACTORS];
       this.ratings = new float[MAX_RATINGS];  
       this.ratingCount = 0;  
    }
