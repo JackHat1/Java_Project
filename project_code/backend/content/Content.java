@@ -1,7 +1,6 @@
 package backend.content;
 
-public class Content {
-    
+public abstract class Content {  
    private int contentId = 0;
    private String title;
    private String primaryGenre;
@@ -13,43 +12,43 @@ public class Content {
    private int MAX_RATINGS;
    private int MAX_ACTORS;
 
-   private int getContentId() {
+   public int getContentId() {
       return contentId;
    }
    // private void setContentId(int contentId) {
    //    this.contentId = contentId;
    // }
-   private String getTitle() {
+   public String getTitle() {
       return title;
    }
    private void setTitle(String title) {
       this.title = title;
    }
-   private String getPrimaryGenre() {
+   public String getPrimaryGenre() {
       return primaryGenre;
    }
    private void setPrimaryGenre(String primaryGenre) {
       this.primaryGenre = primaryGenre;
    }
-   private double getAvgRating() {
+   public double getAvgRating() {
       return avgRating;
    }
    // private void setAvgRating(double avgRating) {
    //    this.avgRating = avgRating;
    // }
-   // private float[] getRatings() {
+   // protected float[] getRatings() {
    //    return ratings;
    // }
    // private void setRatings(float[] ratings) {
    //    this.ratings = ratings;
    // }
-   // private String[] getActorNames() {
+   // protected String[] getActorNames() {
    //    return actorNames;
    // }
    // private void setActorNames(String[] actorNames) {
    //    this.actorNames = actorNames;
    // }
-   private String getDirector() {
+   public String getDirector() {
       return director;
    }
    private void setDirector(String director) {
@@ -61,13 +60,13 @@ public class Content {
    // private void setRatingCount(int ratingCount) {
    //    this.ratingCount = ratingCount;
    // }
-   private int getMAX_RATINGS() {
+   protected int getMAX_RATINGS() {
       return MAX_RATINGS;
    }
    // private void setMAX_RATINGS(int mAX_RATINGS) {
    //    MAX_RATINGS = mAX_RATINGS;
    // }
-   private int getMAX_ACTORS() {
+   protected int getMAX_ACTORS() {
       return MAX_ACTORS;
    }
    // private void setMAX_ACTORS(int mAX_ACTORS) {
@@ -75,6 +74,70 @@ public class Content {
    // }
 
    
+   public Content(String title, String genre, String director) {
+      this.title = title;
+      this.primaryGenre = genre;
+      this.director = director;
+  }
+  
+   // Constructor with default director and genre set as “Unknown”
+   public Content(String title){      
+      this(title, "Unknown", "Unknown"); 
+   }
+
+   public void addRating(float newRating) {
+      if (newRating >= 0 && newRating <= 5) {
+          if (ratingCount < MAX_RATINGS) {
+              ratings[ratingCount] = newRating;
+              ratingCount++;
+          }
+      }
+  }
+
+   public double getAverageRating() {
+      if (ratingCount == 0) {
+         return 0;
+      }
+      
+      double sum = 0;
+      for (int i = 0; i < ratingCount; i++) {
+         sum += ratings[i];
+      }
+      
+      return sum / ratingCount;
+   }
+
+   public String getNonNullActors() {
+      String result = "";
+      int resultLength = 0;
+  
+      for (int i = 0; i < MAX_ACTORS; i++) {
+          if (actorNames[i] != null) {
+              if (resultLength == 0) {
+                  result = actorNames[i];
+              } else {
+                  result = result + ", " + actorNames[i];
+              }
+              resultLength = resultLength + 1;
+          }
+      }
+  
+      return result;
+  }
+
+  public void addActor(String actorName) {
+      int i = 0;
+      while (actorNames[i] != null && i < MAX_ACTORS) {
+         i++;
+      }
+      if (i < MAX_ACTORS) {
+         actorNames[i] = actorName;
+      }
+   }
+ 
+
+  
 
 
+  
 }

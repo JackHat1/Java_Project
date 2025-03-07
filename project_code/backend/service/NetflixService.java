@@ -12,7 +12,8 @@ public class NetflixService {
     // public void setContentRepo(ContentRepository contentRepo) {
     //     this.contentRepo = contentRepo;
     // }
+
     public NetflixService(ContentRepository contentRepo){
-        
+        this.contentRepo = contentRepo;
     }
 }

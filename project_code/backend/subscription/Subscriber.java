@@ -10,7 +10,7 @@ package backend.subscription;
    private int favoriteCount;
 
 
-   private String getSubscriberEmail() {
+   public String getSubscriberEmail() {
       return subscriberEmail;
    }
    private void setSubscriberEmail(String subscriberEmail) {
@@ -22,13 +22,13 @@ package backend.subscription;
    private void setSubscriberPassword(String subscriberPassword) {
       this.subscriberPassword = subscriberPassword;
    }
-   private SubscriptionPlan getPlan() {
+   public SubscriptionPlan getPlan() {
       return plan;
    }
    private void setPlan(SubscriptionPlan plan) {
       this.plan = plan;
    }
-   private Content[] getWatchHistory() {
+   protected Content[] getWatchHistory() {
       return watchHistory;
    }
    // private void setWatchHistory(Content[] watchHistory) {
@@ -40,25 +40,28 @@ package backend.subscription;
    private void setActive(boolean active) {
       this.active = active;
    }
-   private int getWatchCount() {
+   public int getWatchCount() {
       return watchCount;
    }
    // private void setWatchCount(int watchCount) {
    //    this.watchCount = watchCount;
    // }
-   private String[] getFavoriteGenres() {
+   protected String[] getFavoriteGenres() {
       return favoriteGenres;
    }
    private void setFavoriteGenres(String[] favoriteGenres) {
       this.favoriteGenres = favoriteGenres;
    }
-   private int getFavoriteCount() {
+   public int getFavoriteCount() {
       return favoriteCount;
    }
    // private void setFavoriteCount(int favoriteCount) {
    //    this.favoriteCount = favoriteCount;
    // }
-   public Subscriber(String email, String password, SubscriptionPlan plan){
-      
-   }
+   public Subscriber(String email, String password, SubscriptionPlan plan) {
+      this.subscriberEmail = email;
+      this.subscriberPassword = password;
+      this.plan = plan;
+  }
+  
 }

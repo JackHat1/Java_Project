@@ -4,27 +4,31 @@ public class SubscriptionPlan {
     private String planName;
     private double planPrice;
     private int planMaxScreens;
-    private String getPlanName() {
+
+    public String getPlanName() {
         return planName;
     }
     // private void setPlanName(String planName) {
     //     this.planName = planName;
     // }
-    private double getPlanPrice() {
+    public double getPlanPrice() {
         return planPrice;
     }
     // private void setPlanPrice(double planPrice) {
     //     this.planPrice = planPrice;
     // }
-    private int getPlanMaxScreens() {
+    public int getPlanMaxScreens() {
         return planMaxScreens;
     }
     // private void setPlanMaxScreens(int planMaxScreens) {
     //     this.planMaxScreens = planMaxScreens;
     // }
 
-    public SubscriptionPlan(String name, double price, int maxScreens){
-        
+    public SubscriptionPlan(String name, double price, int maxScreens) {
+        this.planName = name;
+        this.planPrice = price;
+        this.planMaxScreens = maxScreens;
     }
+    
     
 }
