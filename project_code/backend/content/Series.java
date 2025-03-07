@@ -91,8 +91,19 @@ public class Series extends Content{
        
     @Override
     public String printDetails() {
-        return super.printDetails() + "\n" + // Reuse Content's printDetails()
-            "Seasons: " + seasons;
+        String details = super.printDetails() + "\nSeasons: " + seasons;
+        for (int i = 0; i < seasons; i++) {
+            details += "\nSeason " + (i + 1) + ": ";
+            String seasonEpisodes = "";
+            for (String episode : episodesPerSeason[i]) {
+                if (episode != null) {
+                    if (!seasonEpisodes.isEmpty()) seasonEpisodes += ", ";
+                    seasonEpisodes += episode;
+                }
+            }
+            details += seasonEpisodes.isEmpty() ? "No episodes added" : seasonEpisodes;
+        }
+        return details;
     }
 
 }

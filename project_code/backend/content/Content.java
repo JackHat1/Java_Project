@@ -9,8 +9,8 @@ public abstract class Content {
    private String [] actorNames;
    private String director;
    private int ratingCount;
-   private int MAX_RATINGS = 100;
-   private int MAX_ACTORS;
+   private int MAX_RATINGS = 1000;
+   private int MAX_ACTORS  = 100; 
    
    public Content(String title, String genre, String director) {
       this.title = title;
@@ -125,7 +125,7 @@ public abstract class Content {
       }
   
       return result;
-  }
+   }
 
   public void addActor(String actorName) {
          int i = 0;
@@ -147,7 +147,8 @@ public abstract class Content {
    }
 
    public String printDetails() {
-      return "Content ID: " + contentId + "\n" +
+      return 
+            "Content ID: " + contentId + "\n" +
             "Title: " + title + "\n" +
             "Primary Genre: " + primaryGenre + "\n" +
             "Director: " + director + "\n" +

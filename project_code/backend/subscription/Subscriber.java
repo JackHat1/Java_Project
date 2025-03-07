@@ -35,7 +35,7 @@ import backend.content.Content;
    private boolean isActive() {
       return active;
    }
-   private void setActive(boolean active) {
+   public void setActive(boolean active) {
       this.active = active;
    }
    public int getWatchCount() {
@@ -44,10 +44,10 @@ import backend.content.Content;
    // private void setWatchCount(int watchCount) {
    //    this.watchCount = watchCount;
    // }
-   protected String[] getFavoriteGenres() {
+   public String[] getFavoriteGenres() {
       return favoriteGenres;
    }
-   private void setFavoriteGenres(String[] favoriteGenres) {
+   public void setFavoriteGenres(String[] favoriteGenres) {
       this.favoriteGenres = favoriteGenres;
    }
    public int getFavoriteCount() {
@@ -61,11 +61,11 @@ import backend.content.Content;
       this.subscriberEmail = email;
       this.subscriberPassword = password;
       this.plan = plan;
-  }
+   }
 
    public void setSubscriberEmail(String email) {
       if (email != null) { // Check if email is not null
-         boolean isValid = email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$"); // Validate format
+         boolean isValid = email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$"); 
          
          if (isValid) { 
             this.subscriberEmail = email;
@@ -97,7 +97,31 @@ import backend.content.Content;
               System.out.println(watchHistory[i].getTitle());  
           }
       }
-  }
+   }
+
+   public void printSubscriberDetails() {
+      System.out.println("? Email: " + subscriberEmail);
+      System.out.println("? Subscription Plan: " + plan.getPlanName());
+      System.out.println("? Price: $" + plan.getPlanPrice() + " per month");
+      System.out.println("? Max Screens: " + plan.getPlanMaxScreens());
+      
+      System.out.println("? Active Status: " + (active ? "Active" : "Inactive"));
+
+      System.out.print("? Favorite Genres: ");
+      if (favoriteCount == 0) {
+         System.out.println("None");
+      } else {
+         for (int i = 0; i < favoriteCount; i++) {
+            System.out.print(favoriteGenres[i] + (i < favoriteCount - 1 ? ", " : "\n"));
+         }
+      }
+
+      System.out.println("? Watch History:");
+      for (int i = 0; i < watchCount; i++) {
+         System.out.println("- " + watchHistory[i].getTitle());
+      }
+   }
+
   
 
   

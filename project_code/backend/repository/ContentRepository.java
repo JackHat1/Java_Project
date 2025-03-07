@@ -6,6 +6,10 @@ public class ContentRepository {
     private int MAX_CONTENT;
     private Content[] contentList;
     private int contentCount;
+    
+    public ContentRepository(int maxNumOfContentEntries){
+        this.MAX_CONTENT = maxNumOfContentEntries;
+    }
 
     public int getMAX_CONTENT() {
         return MAX_CONTENT;
@@ -26,7 +30,36 @@ public class ContentRepository {
     //     this.contentCount = contentCount;
     // }
 
-    public ContentRepository(int maxNumOfContentEntries){
-        this.MAX_CONTENT = maxNumOfContentEntries;
+    public boolean addContent(Content content) {
+        if (contentCount < MAX_CONTENT) {
+            contentList[contentCount] = content; 
+            contentCount++; 
+            return true; 
+        }
+        return false; 
     }
+
+    public Content findContentById(int contentId) {
+        for (int i = 0; i < contentCount; i++) {
+            if (contentList[i] != null && contentList[i].getContentId() == contentId) { 
+                return contentList[i]; 
+            }
+        }
+        return null; 
+    }
+
+    public Content findContentByTitle(String name) {
+        for (int i = 0; i < contentCount; i++) { 
+            if (contentList[i] != null && contentList[i].getTitle().equals(name)) { // to compare strings we must to use equals                                                                   
+                return contentList[i];                                              // If two strings match each other, it returns true otherwise, it returns false.
+            }
+        }
+        return null; 
+    }
+    
+    public Content[] getAllContent() {
+        return contentList; 
+    }
+    
+    
 }
