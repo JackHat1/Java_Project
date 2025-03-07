@@ -1,5 +1,7 @@
 package backend.repository;
 
+import backend.subscription.Subscriber; 
+
 public class SubscriberRepository {
     private int MAX_SUBSCRIBERS;
     private Subscriber[] subscribers;
@@ -24,5 +26,6 @@ public class SubscriberRepository {
     //     this.count = count;
     // }
 
-    
+
+ 
 }
