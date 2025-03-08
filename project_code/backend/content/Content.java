@@ -14,6 +14,10 @@ public abstract class Content {
    private static final int MAX_ACTORS  = 10; 
    
    public Content(String title, String genre, String director) {
+      if (title == null ) {
+         System.out.println("Warning: Title cannot be null. Setting default values.");  // Check for Nun Vallues at Tile and force it as Uknown Title
+         if (title == null) title = "Unknown Title";
+     }
       this.contentId = idCounter++; // Auto-increment ID
       this.title = title;
       this.primaryGenre = genre;
@@ -23,7 +27,7 @@ public abstract class Content {
       this.ratingCount = 0;  
    }
   
-   // Constructor with default director and genre set as “Unknown”
+   // Constructor with default director and genre set as “Unknown” 
    public Content(String title){      
       this(title, "Unknown", "Unknown"); 
    }
@@ -114,7 +118,6 @@ public abstract class Content {
       return Math.round(average * 100.0) / 100.0; // Rounds to 2 decimal places
   }
   
-
    public String getNonNullActors() {
       String result = "";
       int resultLength = 0;

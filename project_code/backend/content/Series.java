@@ -44,9 +44,17 @@ public class Series extends Content{
     
     public void updateEpisode(int season, int episodeIndex, String newTitle) {
         if (season > 0 && season <= seasons && episodeIndex >= 0) {
-            episodesPerSeason[season - 1][episodeIndex] = newTitle;
+            if (episodesPerSeason[season - 1][episodeIndex] != null) { // Ensure episode exists
+                episodesPerSeason[season - 1][episodeIndex] = newTitle;
+                System.out.println("? Episode modified successfully: " + newTitle);
+            } else {
+                System.out.println("? ERROR: No episode found at that position.");
+            }
+        } else {
+            System.out.println("? ERROR: Invalid season or episode index.");
         }
     }
+    
 
     public String[] getEpisodes(int season) {
         if (season > 0 && season <= seasons) { 
