@@ -20,13 +20,13 @@ public class NetflixService {
     }
 
     public Content[] getRecommendedMoviesByFavoriteGenres(Subscriber subscriber, int maxResults) {
-        if (subscriber == null) { // ✅ Check if subscriber is null
+        if (subscriber == null) {
             System.out.println("Error: Subscriber is null. Cannot generate recommendations.");
-            return new Content[0]; // Return empty array
+            return new Content[0]; 
         }
 
         String[] favoriteGenres = subscriber.getFavoriteGenres();
-        if (favoriteGenres == null) { // ✅ Check if favorite genres exist
+        if (favoriteGenres == null) {
             System.out.println("Warning: Subscriber has no favorite genres.");
             return new Content[0];
         }

@@ -102,16 +102,18 @@ public abstract class Content {
 
    public double getAverageRating() {
       if (ratingCount == 0) {
-         return 0;
+          return 0;
       }
       
       double sum = 0;
       for (int i = 0; i < ratingCount; i++) {
-         sum += ratings[i];
+          sum += ratings[i];
       }
       
-      return sum / ratingCount;
-   }
+      double average = sum / ratingCount;
+      return Math.round(average * 100.0) / 100.0; // Rounds to 2 decimal places
+  }
+  
 
    public String getNonNullActors() {
       String result = "";

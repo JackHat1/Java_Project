@@ -125,7 +125,6 @@ public void printSubscriberDetails() {
         System.out.println(); // Move to next line after printing genres
     }
 
-    // ✅ Print Watch History
     System.out.println("? Watch History:");
     if (watchCount == 0 || watchHistory == null) {
         System.out.println("- None");
