@@ -33,14 +33,22 @@ public class ContentRepository {
     // }
 
     public boolean addContent(Content content) {
-        if (contentCount < MAX_CONTENT) {
-            contentList[contentCount] = content; 
-            contentCount++; 
-            return true; 
+        if (contentCount >= MAX_CONTENT) {
+            System.out.println("WARNING: Cannot add content. Storage is full.");
+            return false; 
         }
-        return false; 
+        // Check for duplicate title
+        for (int i = 0; i < contentCount; i++) {
+            if (contentList[i] != null && contentList[i].getTitle().equalsIgnoreCase(content.getTitle())) {
+                System.out.println("WARNING: Duplicate title detected. Content not added.");
+                return false;
+            }
+        }
+        contentList[contentCount] = content;
+        contentCount++;
+        return true;
     }
-
+    
     public Content findContentById(int contentId) {
         for (int i = 0; i < contentCount; i++) {
             if (contentList[i] != null && contentList[i].getContentId() == contentId) { 

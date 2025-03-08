@@ -101,15 +101,24 @@ import backend.content.Content;
    }
 
    public void watchContent(Content content) {
-      for (int i = 0; i < 100; i++) { 
-          if (watchHistory[i] == null) {
-              watchHistory[i] = content; 
-              watchCount++;
-              System.out.println(subscriberEmail + " watched " + content.getTitle());
-              return; 
-          }
+      if (!active) {
+          System.out.println("ERROR: Cannot watch content. Subscriber is deactivated.");
+          return;
       }
-  }
+      if (watchCount >= 10) {
+          System.out.println("ERROR: Watch history is full. Cannot add more.");
+          return;
+      }
+      for (int i = 0; i < MAX_HISTORY; i++) { 
+         if (watchHistory[i] == null) {
+             watchHistory[i] = content; 
+             watchCount++;
+             System.out.println(subscriberEmail + " watched " + content.getTitle());
+             return; 
+         }
+     }
+   }
+  
   
 
    public void printHistory() {

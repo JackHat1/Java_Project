@@ -25,9 +25,16 @@ public class Series extends Content{
 
     public void addEpisode(int season, int episodeIndex, String episodeTitle) {
         if (season > 0 && season <= seasons && episodeIndex >= 0 && episodeIndex < episodesPerSeason[season - 1].length) {
+            if (episodesPerSeason[season - 1][episodeIndex] != null) {
+                System.out.println("ERROR: Episode slot already occupied.");
+                return;
+            }
             episodesPerSeason[season - 1][episodeIndex] = episodeTitle;
+        } else {
+            System.out.println("ERROR: Invalid season or episode index.");
         }
     }
+    
 
     public void removeEpisode(int season, String episodeTitle) {
         if (season > 0 && season <= seasons) { 
