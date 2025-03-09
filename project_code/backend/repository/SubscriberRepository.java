@@ -6,7 +6,8 @@ public class SubscriberRepository {
     private int MAX_SUBSCRIBERS = 100;
     private Subscriber[] subscribers = new Subscriber[MAX_SUBSCRIBERS];
     private int count = 0;
-
+   
+    //GETTERS &SETTERS //
     public int getMAX_SUBSCRIBERS() {
         return MAX_SUBSCRIBERS;
     }
@@ -26,6 +27,7 @@ public class SubscriberRepository {
     //     this.count = count;
     // }
 
+    // METHODS //
     public boolean addSubscriber(Subscriber subscriber) {
         if (subscriber == null) return false;
     
@@ -42,7 +44,6 @@ public class SubscriberRepository {
         }
         return false; 
     }
-    
     
     public void deactivateSubscriber(Subscriber subscriber) {
         if (subscriber != null) {

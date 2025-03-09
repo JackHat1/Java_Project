@@ -13,6 +13,7 @@ import backend.content.Content;
    private String[] favoriteGenres;
    private int favoriteCount;
 
+   //CONSTRUCTOR // 
    public Subscriber(String email, String password, SubscriptionPlan plan) {
       this.subscriberEmail = email;
       this.subscriberPassword = password;
@@ -24,6 +25,7 @@ import backend.content.Content;
 
    }
 
+   //GETTERS &SETTERS //
    public String getSubscriberEmail() {
       return subscriberEmail;
    }
@@ -58,6 +60,14 @@ import backend.content.Content;
    public String[] getFavoriteGenres() {
       return favoriteGenres;
    }
+   public int getFavoriteCount() {
+      return favoriteCount;
+   }
+   // private void setFavoriteCount(int favoriteCount) {
+   //    this.favoriteCount = favoriteCount;
+   // }
+
+   // METHODS //
    public void setFavoriteGenres(String[] genres) {
       if (genres != null) {
           if (genres.length > 3) { 
@@ -74,15 +84,9 @@ import backend.content.Content;
           favoriteGenres = new String[5]; // Reset to empty array of size 3
           favoriteCount = 0;
       }
-  }
-  
-   public int getFavoriteCount() {
-      return favoriteCount;
    }
-   // private void setFavoriteCount(int favoriteCount) {
-   //    this.favoriteCount = favoriteCount;
-   // }
-   
+  
+
 
    public void setSubscriberEmail(String email) {
       if (email != null) { // Check if email is not null

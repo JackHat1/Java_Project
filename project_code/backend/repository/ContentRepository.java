@@ -6,13 +6,15 @@ public class ContentRepository {
     private int MAX_CONTENT ;
     private Content[] contentList;
     private int contentCount;
-    
+
+    //CONSTRUCTOR // 
     public ContentRepository(int maxNumOfContentEntries){
         this.MAX_CONTENT = maxNumOfContentEntries;
         this.contentList = new Content[MAX_CONTENT]; 
         this.contentCount = 0; 
     }
 
+    //GETTERS &SETTERS //
     public int getMAX_CONTENT() {
         return MAX_CONTENT;
     }
@@ -32,6 +34,7 @@ public class ContentRepository {
     //     this.contentCount = contentCount;
     // }
 
+    // METHODS // 
     public boolean addContent(Content content) {
         if (contentCount >= MAX_CONTENT) {
             System.out.println("WARNING: Cannot add content. Storage is full.");

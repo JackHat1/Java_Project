@@ -13,6 +13,7 @@ public abstract class Content {
    private static final int MAX_RATINGS = 100;
    private static final int MAX_ACTORS  = 10; 
    
+   //CONSTRUCTOR // 
    public Content(String title, String genre, String director) {
       if (title == null ) {
          System.out.println("Warning: Title cannot be null. Setting default values.");  // Check for Nun Vallues at Tile and force it as Uknown Title
@@ -31,7 +32,7 @@ public abstract class Content {
    public Content(String title){      
       this(title, "Unknown", "Unknown"); 
    }
-
+   //GETTERS &SETTERS //
    public int getContentId() {
       return contentId;
    }
@@ -94,7 +95,8 @@ public abstract class Content {
    // private void setMAX_ACTORS(int mAX_ACTORS) {
    //    MAX_ACTORS = mAX_ACTORS;
    // }
-
+   
+   // METHODS // 
    public void addRating(float newRating) {
       if (newRating >= 0 && newRating <= 5) {
           if (ratingCount < MAX_RATINGS) {
@@ -136,7 +138,7 @@ public abstract class Content {
       return result;
    }
 
-  public void addActor(String actorName) {
+   public void addActor(String actorName) {
          int i = 0;
          while (actorNames[i] != null && i < MAX_ACTORS) {
             i++;

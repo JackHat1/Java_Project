@@ -5,6 +5,14 @@ public class SubscriptionPlan {
     private double planPrice;
     private int planMaxScreens;
 
+   //CONSTRUCTOR // 
+    public SubscriptionPlan(String name, double price, int maxScreens) {
+        this.planName = name;
+        this.planPrice = price;
+        this.planMaxScreens = maxScreens;
+    }
+    
+    //GETTERS &SETTERS //
     public String getPlanName() {
         return planName;
     }
@@ -24,11 +32,7 @@ public class SubscriptionPlan {
     //     this.planMaxScreens = planMaxScreens;
     // }
 
-    public SubscriptionPlan(String name, double price, int maxScreens) {
-        this.planName = name;
-        this.planPrice = price;
-        this.planMaxScreens = maxScreens;
-    }
+
     
     
 }
