@@ -141,7 +141,7 @@ import backend.content.Content;
       System.out.println("? Max Screens: " + plan.getPlanMaxScreens());
       System.out.println("? Active Status: " + (active ? "Active" : "Deactivated"));
 
-      // ✅ Print Favorite Genres
+      // Print Favorite Genres
       System.out.print("? Favorite Genres: ");
       if (favoriteCount == 0 || favoriteGenres == null) {
          System.out.println("None");

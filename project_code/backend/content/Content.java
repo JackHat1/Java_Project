@@ -2,7 +2,7 @@ package backend.content;
 
 public abstract class Content {  
    private int contentId ;
-   private static int idCounter = 1; // Auto-increment ID
+   private static int idCounter = 0; // Auto-increment ID
    private String title;
    private String primaryGenre;
    private double avgRating;
