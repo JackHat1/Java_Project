@@ -83,11 +83,11 @@ Movies Recommended for Subscriber bob@example.com
 
 ## 🧠 Concepts Applied
 
-- ✅ Encapsulation
-- ✅ Inheritance & Polymorphism
-- ✅ Abstraction (NetflixService)
-- ✅ Input Validation
-- ✅ Defensive Programming
+- Encapsulation
+- Inheritance & Polymorphism
+- Abstraction (NetflixService)
+- Input Validation
+- Defensive Programming
 
 ---
 
