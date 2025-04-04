@@ -67,52 +67,58 @@ public class Series extends Content{
     
 
     public String[] getEpisodes(int season) {
-        if (season > 0 && season <= seasons) { 
-            int count = 0; 
-            int i = 0;
+        if (season > 0 && season <= seasons) {
+            String[] allEpisodes = episodesPerSeason[season - 1];
     
-            while (i < 100) { 
-                if (episodesPerSeason[season - 1][i] != null) {
-                    count++; 
+            //calc the number of episodes  
+            int count = 0;
+            for (int i = 0; i < allEpisodes.length; i++) {
+                if (allEpisodes[i] != null) {
+                    count++;
                 }
-                i++;
             }
     
-            // Create a new array to store found episodes
             String[] episodes = new String[count];
             int index = 0;
-            i = 0;
-            
-            while (i < 100) { 
-                if (episodesPerSeason[season - 1][i] != null) {
-                    episodes[index] = episodesPerSeason[season - 1][i];
-                    index++;
+            for (int i = 0; i < allEpisodes.length; i++) {
+                if (allEpisodes[i] != null) {
+                    episodes[index++] = allEpisodes[i];
                 }
-                i++;
             }
     
-            return episodes; 
+            return episodes;
         }
-        
+    
         return new String[0];
     }
+    
           
     @Override
     public String printDetails() {
         String details = super.printDetails() + "\nSeasons: " + seasons;
+    
         for (int i = 0; i < seasons; i++) {
             details += "\nSeason " + (i + 1) + ": ";
             String seasonEpisodes = "";
+    
             for (String episode : episodesPerSeason[i]) {
                 if (episode != null) {
-                    if (!seasonEpisodes.isEmpty()) seasonEpisodes += ", ";
+                    if (!seasonEpisodes.isEmpty()) {
+                        seasonEpisodes += ", ";
+                    }
                     seasonEpisodes += episode;
                 }
             }
-            details += seasonEpisodes.isEmpty() ? "No episodes added" : seasonEpisodes;
+    
+            if (seasonEpisodes.isEmpty()) {
+                details += "No episodes added";
+            } else {
+                details += seasonEpisodes;
+            }
         }
+    
         return details;
-    }
+    }    
 
 }
 
